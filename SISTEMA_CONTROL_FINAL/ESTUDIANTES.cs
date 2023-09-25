@@ -80,6 +80,14 @@ namespace SISTEMA_CONTROL_FINAL
             }
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string sentencia = "UPDATE ESTUDIANTEJEAN SET estudiante = '" + txtestudiante.Text + "', carrera = '" + txtcarrera.Text + "' WHERE matricula = '" + txtmatricula.Text + "'";
+            string mensaje = "Datos agregados correctamente";
+            EjecutarSql(sentencia, mensaje);
+
+        }
+
         // Método para ejecutar consultas SQL
         public void EjecutarSql(string sql, string msg)
         {
