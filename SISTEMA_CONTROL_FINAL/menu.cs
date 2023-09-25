@@ -16,5 +16,17 @@ namespace SISTEMA_CONTROL_FINAL
         {
             InitializeComponent();
         }
+
+        private void estudiantesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ESTUDIANTES formEstudiantes = new ESTUDIANTES();
+            formEstudiantes.Show();
+
+        }
+
+        private void menu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

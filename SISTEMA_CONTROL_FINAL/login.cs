@@ -19,21 +19,20 @@ namespace SISTEMA_CONTROL_FINAL
         {
             InitializeComponent();
         }
-        int n = 0;
+
         private void button1_Click(object sender, EventArgs e)
         {
             string connectionString = "Data Source=JEAN;Initial Catalog=SYSTEMJEAN;Integrated Security=True";
             SqlConnection conn = new SqlConnection(connectionString);
             SqlDataReader dr;
-            DataSet ds = new DataSet();
 
             try
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM USUARIOSJEAN WHERE SYSTEMJEAN='" + textBox1.Text + "' AND Clave='" + textBox1.Text + "'", conn);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM USUARIOSJEAN WHERE USUARIO='" + textBox1.Text + "' AND Clave='" + textBox2.Text + "'", conn);
                 dr = cmd.ExecuteReader();
 
-                if (dr.HasRows == true)
+                if (dr.HasRows)
                 {
                     MessageBox.Show("Bienvenido a nuestro sistema escolar");
                     this.Hide();
@@ -50,14 +49,13 @@ namespace SISTEMA_CONTROL_FINAL
             }
             catch (SqlException ex)
             {
-               
+                MessageBox.Show("Error de SQL: " + ex.Message);
             }
             finally
             {
                 conn.Close();
             }
         }
-
 
         private void login_Load(object sender, EventArgs e)
         {
@@ -80,3 +78,4 @@ namespace SISTEMA_CONTROL_FINAL
         }
     }
 }
+

@@ -1,0 +1,19 @@
+create database SYSTEMJEAN
+
+use SYSTEMJEAN
+
+create table USUARIOSJEAN
+
+(codigo int, USUARIO varchar(30), Clave varchar(30))
+
+Insert into USUARIOSJEAN values (1,'brayan','54321')
+Insert into USUARIOSJEAN values (2,'maicol','12345')
+Insert into USUARIOSJEAN values (3,'brayan','56789')
+Insert into USUARIOSJEAN values (4,'brayan','98765')
+Insert into USUARIOSJEAN values (5,'brayan','11111')
+Insert into USUARIOSJEAN values (6,'brayan','22222')
+Insert into USUARIOSJEAN values (7,'brayan','33333')
+
+
+base de datos para usuarios del systema de control de alumnos
+        

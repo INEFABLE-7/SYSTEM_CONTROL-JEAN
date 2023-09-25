@@ -112,6 +112,7 @@
             this.estudiantesToolStripMenuItem.Name = "estudiantesToolStripMenuItem";
             this.estudiantesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.estudiantesToolStripMenuItem.Text = "Estudiantes";
+            this.estudiantesToolStripMenuItem.Click += new System.EventHandler(this.estudiantesToolStripMenuItem_Click);
             // 
             // profesoresToolStripMenuItem
             // 
@@ -203,6 +204,7 @@
             this.Name = "menu";
             this.RightToLeftLayout = true;
             this.Text = "menu";
+            this.Load += new System.EventHandler(this.menu_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

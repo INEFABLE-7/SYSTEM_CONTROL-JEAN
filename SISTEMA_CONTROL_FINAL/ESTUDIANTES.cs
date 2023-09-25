@@ -48,10 +48,11 @@ namespace SISTEMA_CONTROL_FINAL
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string sentencia = "UPDATE ESTUDIANTESJEAN SET ESTUDIANTE = '" + txtestudiante.Text + "', carrera = '" + txtmatricula.Text + "' WHERE matricula = '" + txtmatricula.Text + "'";
-            string mensaje = "Los datos fueron actualizados correctamente";
-
+            string sentencia = "INSERT INTO ESTUDIANTEJEAN (matricula, ESTUDIANTE, carrera) VALUES ('" + txtmatricula.Text + "', '" + txtestudiante.Text + "', '" + txtcarrera.Text + "')";
+            string mensaje = "Los datos fueron insertados correctamente";
+            EjecutarSql(sentencia, mensaje);
         }
+
 
         private void ESTUDIANTES_Load(object sender, EventArgs e)
         {
@@ -73,6 +74,7 @@ namespace SISTEMA_CONTROL_FINAL
             catch (SqlException ex)
             {
                 // Manejar excepciones de SQL Server aquí
+                MessageBox.Show("Error de SQL: " + ex.Message);
             }
             finally
             {
@@ -83,8 +85,71 @@ namespace SISTEMA_CONTROL_FINAL
         private void button2_Click(object sender, EventArgs e)
         {
             string sentencia = "UPDATE ESTUDIANTEJEAN SET estudiante = '" + txtestudiante.Text + "', carrera = '" + txtcarrera.Text + "' WHERE matricula = '" + txtmatricula.Text + "'";
-            string mensaje = "Datos agregados correctamente";
+            string mensaje = "Datos actualizados correctamente";
             EjecutarSql(sentencia, mensaje);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            EliminarEstudianteJEAN();
+        }
+
+        // Método para eliminar datos de la tabla ESTUDIANTEJEAN
+        public void EliminarEstudianteJEAN()
+        {
+            string matricula = txtmatricula.Text;
+
+            if (string.IsNullOrEmpty(matricula))
+            {
+                MessageBox.Show("Por favor, ingrese la matrícula para eliminar.");
+                return;
+            }
+
+            string sentencia = "DELETE FROM ESTUDIANTEJEAN WHERE matricula = '" + matricula + "'";
+            string mensaje = "Los datos fueron eliminados correctamente";
+
+            EjecutarSql(sentencia, mensaje);
+            // Limpiar los campos después de eliminar
+            txtmatricula.Clear();
+            txtestudiante.Clear();
+            txtcarrera.Clear();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            MostrarDatosEstudianteJEAN();
+        }
+
+        // Método para mostrar datos de la tabla ESTUDIANTEJEAN en el DataGridView
+        public void MostrarDatosEstudianteJEAN()
+        {
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM ESTUDIANTEJEAN", conexion);
+            DataSet ds = new DataSet();
+
+            try
+            {
+                conexion.Open();
+                da.Fill(ds);
+                dataGridView1.DataSource = ds.Tables[0];
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error de SQL: " + ex.Message);
+            }
+            finally
+            {
+                conexion.Close();
+            }
+        }
+
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+
+
+
+
 
         }
 
