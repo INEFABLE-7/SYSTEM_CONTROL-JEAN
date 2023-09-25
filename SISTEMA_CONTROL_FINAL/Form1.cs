@@ -27,10 +27,28 @@ namespace SISTEMA_CONTROL_FINAL
         {
 
         }
-        Dim N As INTEGER = 0;
+        private int N = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
             N = N + 1;
+            progressBar1.Value = N;
+            label1.Text = N.ToString();
+
+            if (N == 100)
+            {
+                timer1.Stop();
+                this.Hide();
+
+                login loginForm = new login();
+                loginForm.Show();
+
+
+
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
 
         }
     }
